@@ -1,0 +1,56 @@
+@startuml
+
+
+class Agent {
+}
+
+interface Source {
+}
+
+interface Observer {
+}
+
+class PacketSource {
+}
+
+class Origin {
+}
+
+class Channel {
+}
+
+class Outlet {
+}
+
+Agent <-- Origin
+Agent <-- PacketSource
+Agent <-- Channel
+Channel <-- Outlet
+Source <|--  PacketSource
+Observer <|-- Channel
+@enduml
+
+abstract class AbstractList
+abstract AbstractCollection
+interface List
+interface Collection
+
+List <|-- AbstractList
+Collection <|-- AbstractCollection
+
+Collection <|- List
+AbstractCollection <|- AbstractList
+AbstractList <|-- ArrayList
+
+
+class ArrayList {
+Object[] elementData
+size()
+}
+
+enum TimeUnit {
+DAYS
+HOURS
+MINUTES
+}
+
