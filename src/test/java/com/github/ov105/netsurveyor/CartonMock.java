@@ -17,7 +17,7 @@ import org.bson.Document;
 /**
  * Created by tlee on 1/31/17.
  */
-public class PackageDummy<String> extends Package<String> {
+public class CartonMock<String> extends Carton<String> {
     public Document getDocument() {
         Document doc = new Document("key1", "value1");
         doc.append("key2", "value2");

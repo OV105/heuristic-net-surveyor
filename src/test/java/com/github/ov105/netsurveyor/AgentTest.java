@@ -20,9 +20,7 @@ import junit.framework.TestSuite;
 /**
  * Unit test for simple App.
  */
-public class AgentTest
-    extends TestCase
-{
+public class AgentTest extends TestCase {
     /**
      * Create the test case
      *

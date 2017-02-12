@@ -23,16 +23,28 @@ import org.bson.Document;
  *  Class to encapsulate data for processing by class
  *  that implements Observer
  */
-public abstract class Package<T> {
+public abstract class Carton<T> {
     private UUID uuid;
     private T data;
     private Instant timestamp;
     protected Logger logger;
 
-    public Package() {
-        logger = LoggerFactory.getLogger ( Package.class );
+    /**
+     * no argument constructor. sets creation timestamp and assigns new UUID.
+     */
+    public Carton() {
+        logger = LoggerFactory.getLogger ( Carton.class );
         timestamp = Instant.now();
         setUuid( UUID.randomUUID() );
+    }
+
+
+    /**
+     * constructor that takes data item. sets creation timestamp and assigns new UUID.
+     */
+    public Carton ( T data ) {
+        this();
+        setData ( data);
     }
 
     public UUID getUuid() {
@@ -60,6 +72,10 @@ public abstract class Package<T> {
         return timestamp.toEpochMilli();
     }
 
+    /**
+     * return bson document with field values extracted from data.
+     * @return bson Document
+     */
     public abstract Document getDocument();
 
 }

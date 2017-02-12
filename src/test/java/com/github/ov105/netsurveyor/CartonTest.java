@@ -22,23 +22,23 @@ import static org.hamcrest.CoreMatchers.instanceOf;
 import static org.junit.Assert.*;
 
 /**
- * Class to test Package class
+ * Class to test Carton class
  */
-public class PackageTest extends TestCase {
+public class CartonTest extends TestCase {
     public void testConstructor() throws Exception {
-        Package pkg = new PackageDummy<String>();
-        assertThat ( pkg, instanceOf( Package.class ) );
+        Carton pkg = new CartonMock<String>();
+        assertThat ( pkg, instanceOf( Carton.class ) );
     }
 
     public void testuid() throws Exception {
-        Package pkg = new PackageDummy<String>();
+        Carton pkg = new CartonMock<String>();
         UUID uuid = pkg.getUuid();
         String uuidText = uuid.toString();
         assertEquals(36, uuidText.length());
     }
 
     public void testData() throws Exception {
-        Package pkg = new PackageDummy<String>();
+        Carton pkg = new CartonMock<String>();
         String data = "Foo";
         pkg.setData(data);
         assertEquals(data, pkg.getData());
@@ -46,14 +46,14 @@ public class PackageTest extends TestCase {
 
     public void testGetTimestamp() throws Exception {
         Instant timestamp = Instant.now();
-        Package pkg = new PackageDummy<String>();
+        Carton pkg = new CartonMock<String>();
         assertEquals(timestamp.getEpochSecond(), pkg.getTimestamp().getEpochSecond());
 
     }
 
     public void testGetTimestampMilli() throws Exception {
         Instant before = Instant.now();
-        Package pkg = new PackageDummy<String>();
+        Carton pkg = new CartonMock<String>();
         Instant after = Instant.now();
         assertTrue(before.toEpochMilli() <= pkg.getTimestampMilli());
         assertTrue(after.toEpochMilli() >= pkg.getTimestampMilli());
@@ -61,7 +61,7 @@ public class PackageTest extends TestCase {
     }
 
     public void testGetDocument() throws Exception {
-        Package pkg = new PackageDummy<String>();
+        Carton pkg = new CartonMock<String>();
         Document doc = pkg.getDocument();
         assertEquals("value1", doc.get("key1"));
     }

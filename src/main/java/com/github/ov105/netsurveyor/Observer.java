@@ -14,8 +14,12 @@
 package com.github.ov105.netsurveyor;
 
 /**
- *  Interface to wait for/observer packets
+ *  Interface to wait for/observe Carton objects
  */
 public interface Observer {
-    void convey ( Package item );
+    /**
+     * process Carton objects
+     * @param item
+     */
+    void convey ( Carton item );
 }

@@ -20,6 +20,13 @@ import org.springframework.context.annotation.*;
  */
 
 @Configuration
+@PropertySource ( "classpath:/com/gitub.ov105/netsurveyor/agent.properties")
 public class AgentConfig {
+
+    @Bean
+    public Source getPcap4jSource() {
+        Source source = new Pcap4jPcapSource( "");
+        return source;
+    }
 
 }

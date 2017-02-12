@@ -50,11 +50,11 @@ public abstract class Source {
     }
 
     /**
-     * Send object that implements Package to all
+     * Send object that implements Carton to all
      * registered Observers
      * @param item
      */
-    public void send ( Package item ) {
+    public void send ( Carton item ) {
         for (Observer observer :  observers) {
             logger.trace("Conveying item %s", item);
             observer.convey ( item );
