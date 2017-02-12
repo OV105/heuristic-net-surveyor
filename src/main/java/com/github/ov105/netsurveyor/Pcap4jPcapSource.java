@@ -32,14 +32,13 @@ import org.pcap4j.packet.Packet;
  */
 public class Pcap4jPcapSource extends Source {
     Path pcapPath;
-    Logger logger;
 
     /**
      * constructor
      * @param pcapPathString - path to pcap file
      */
     public Pcap4jPcapSource ( String pcapPathString ) {
-        logger = LoggerFactory.getLogger ( this.getClass() );
+        super();
         this.pcapPath = Paths.get ( pcapPathString );
         if ( ! Files.isRegularFile ( this.pcapPath ) ) {
             String errMsg = String.format ( "%s is not a regular file.", pcapPathString );
@@ -51,7 +50,8 @@ public class Pcap4jPcapSource extends Source {
     /**
      * Open and process packets in pcap file located at pcapPath.
      */
-    public void start() {
+    @Override
+    public void start() throws RuntimeException {
         PcapHandle handle;
         int MAX_COUNT = 10;
         try {

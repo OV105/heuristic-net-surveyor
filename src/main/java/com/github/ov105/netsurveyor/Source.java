@@ -65,5 +65,5 @@ public abstract class Source {
      * Abstract method for class specific initialization.
      * Should contain or call main event loop.
      */
-    public abstract void start();
+    public abstract void start() throws RuntimeException;
 }

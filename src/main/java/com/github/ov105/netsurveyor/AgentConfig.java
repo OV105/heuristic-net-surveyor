@@ -13,7 +13,13 @@
  \*****************************************************************/
 package com.github.ov105.netsurveyor;
 
+import org.pcap4j.core.PcapNativeException;
+import org.pcap4j.core.PcapNetworkInterface;
+import org.pcap4j.core.Pcaps;
 import org.springframework.context.annotation.*;
+
+import java.net.InetAddress;
+import java.net.UnknownHostException;
 
 /**
  * Class to configure net surveyor using Spring
@@ -24,9 +30,23 @@ import org.springframework.context.annotation.*;
 public class AgentConfig {
 
     @Bean
-    public Source getPcap4jSource() {
-        Source source = new Pcap4jPcapSource( "");
+    public Source getPcap4jLiveSource() {
+        String nicAddress = "0.0.0.0";
+        InetAddress addressObj = null;
+        try {
+            PcapNetworkInterface pcap4jDevice;
+            addressObj = InetAddress.getByName(nicAddress);
+        } catch (UnknownHostException ex) {
+            String errMsg = String.format("Failed to create InetAddress for nicAddress: %s, error %s", nicAddress, ex.getMessage());
+        }
+        Source source = new Pcap4jLiveSource( addressObj );
         return source;
     }
+     @Bean
+    public Source getPcap4jFileSource() {
+         Source source = new Pcap4jPcapSource( "");
+         return source;
+
+     }
 
 }
