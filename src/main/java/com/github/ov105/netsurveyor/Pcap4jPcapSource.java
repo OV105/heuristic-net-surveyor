@@ -31,7 +31,7 @@ import org.pcap4j.packet.Packet;
  *  Class to create Carton objects from packets in a pcap file.
  */
 public class Pcap4jPcapSource extends Source {
-    Path pcapPath;
+    private Path pcapPath;
 
     /**
      * constructor
@@ -80,5 +80,14 @@ public class Pcap4jPcapSource extends Source {
                 throw new RuntimeException(errMsg);
             }
         }
+    }
+
+    public void setPcapPath ( Path path ) {
+        logger.info ( String.format ( "Setting pcap path to: {}", path.getFileName() ));
+        pcapPath = path;
+    }
+
+    public Path getPcapPath() {
+        return pcapPath;
     }
 }

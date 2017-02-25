@@ -41,6 +41,7 @@ public class Pcap4jPcapSourceTest extends TestCase {
         source.addObserver ( obs );
         source.start();
         assertEquals ( 1, obs.cartons.size() );
+        assertEquals ( pcapFile.toString(), source.getPcapPath().toString() );
     }
 
     public void testSingleSix() throws Exception {
